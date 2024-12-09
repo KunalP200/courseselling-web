@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Mobile OTP Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://img.freepik.com/free-vector/online-tutorials-concept_52683-37480.jpg');
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:disabled {
+            background-color: #ccc;
+        }
+        .otp-section {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign Up</h2>
+        <div id="mobile-section">
+            <label for="mobile">Enter Mobile Number:</label>
+            <input type="text" id="mobile" placeholder="Enter your mobile number" maxlength="10">
+            <button class="button" onclick="sendOtp()">Send OTP</button>
+        </div>
+        
+        <div id="otp-section" class="otp-section">
+            <label for="otp">Enter OTP:</label>
+            <input type="text" id="otp" placeholder="Enter OTP" maxlength="6">
+            <button class="button" onclick="verifyOtp()">Verify OTP</button>
+        </div>
+        
+        <div id="verification-status"></div>
+    </div>
+
+    <script>
+        let mobileNumber = "";
+        let otp = "";
+
+        // Function to send OTP (Dummy function for now)
+        function sendOtp() {
+            mobileNumber = document.getElementById("mobile").value;
+
+            if (mobileNumber.length === 10) {
+                // Simulate sending OTP
+                otp = Math.floor(100000 + Math.random() * 900000);  // Generate random 6-digit OTP
+                console.log("Generated OTP: ", otp); // For demo purposes, OTP is logged in the console
+
+                // Show OTP input section
+                document.getElementById("mobile-section").style.display = "none";
+                document.getElementById("otp-section").style.display = "block";
+                document.getElementById("verification-status").innerHTML = "OTP sent successfully!";
+            } else {
+                alert("Please enter a valid 10-digit mobile number.");
+            }
+        }
+
+        // Function to verify OTP (Dummy function for now)
+        function verifyOtp() {
+            const enteredOtp = document.getElementById("otp").value;
+
+            if (enteredOtp == otp) {
+                document.getElementById("verification-status").innerHTML = "OTP Verified Successfully!";
+                document.getElementById("verification-status").style.color = "green";
+            } else {
+                document.getElementById("verification-status").innerHTML = "Invalid OTP. Please try again.";
+                document.getElementById("verification-status").style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

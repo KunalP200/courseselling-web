@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Courses - Online Education</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+    header, footer {
+      background: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: 20px auto;
+      background: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    h2 {
+      color: #4CAF50;
+    }
+    .course {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+    .course h3 {
+      margin: 0;
+    }
+    .course p {
+      margin: 10px 0;
+    }
+    .no-courses {
+      text-align: center;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Online Education</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="courses.html">Courses</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact us</a>
+      <a href="myCourses.html">My Courses</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>My Purchased Courses</h2>
+    <div id="purchased-courses">
+      <!-- Purchased courses will be displayed here dynamically -->
+    </div>
+  </main>
+
+  <footer>
+    <p>made by kunal and krishna</p>
+  </footer>
+
+  <script>
+    // Simulate fetching purchased courses (replace with API or local storage)
+    const purchasedCourses = JSON.parse(localStorage.getItem('purchasedCourses')) || [];
+
+    const container = document.getElementById('purchased-courses');
+
+    if (purchasedCourses.length === 0) {
+      container.innerHTML = '<p class="no-courses">You have not purchased any courses yet.</p>';
+    } else {
+      purchasedCourses.forEach(course => {
+        const courseDiv = document.createElement('div');
+        courseDiv.className = 'course';
+        courseDiv.innerHTML = `
+          <h3>${course.name}</h3>
+          <p>${course.description || 'No description available.'}</p>
+          <a href="${course.link}" class="button">Go to Course</a>
+        `;
+        container.appendChild(courseDiv);
+      });
+    }
+  </script>
+</body>
+</html>
